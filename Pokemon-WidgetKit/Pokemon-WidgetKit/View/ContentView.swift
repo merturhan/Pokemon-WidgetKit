@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @AppStorage("pokemon", store: UserDefaults(suiteName: "group.merturhan.Pokemon-WidgetKit"))
+    var pokemonData : Data = Data()
+    
     var body: some View {
         VStack{
             ForEach(pokemonArray) { pokemon in
-                PokemonView(pokemon: pokemon)
+                PokemonView(pokemon: pokemon).onTapGesture(perform: {
+                    userDefaultsSave(pokemon: pokemon)
+                })
             }
+        }
+    }
+    
+    func userDefaultsSave(pokemon : Pokemon) {
+        
+        if let pokemonData = try?
+            JSONEncoder().encode(pokemon){
+            self.pokemonData = pokemonData
+            print(pokemon.name)
         }
     }
 }
