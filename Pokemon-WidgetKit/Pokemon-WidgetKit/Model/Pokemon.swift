@@ -22,3 +22,4 @@ let pikachu = Pokemon(picName: "pikachu", name: "Pikachu", type: "Mouse Pokemon"
 let charmander = Pokemon(picName: "charmander", name: "Charmander", type: "Lizard Pokemon")
 let clefairy = Pokemon(picName: "clefairy", name: "Clefairy", type: "Fairy Pokemon")
 
+let pokemonArray = [pikachu, charmander, clefairy]
