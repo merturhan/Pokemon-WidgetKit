@@ -10,41 +10,46 @@ import SwiftUI
 import Intents
 
 struct Provider: IntentTimelineProvider {
+    
+    @AppStorage("pokemon", store: UserDefaults(suiteName: "group.merturhan.Pokemon-WidgetKit"))
+    var pokemonData : Data = Data()
+    
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+        SimpleEntry(date: Date(), configuration: ConfigurationIntent(), pokemon: Pokemon(picName: "pikachu", name: "Pikachu", type: "Mouse Pokemon"))
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
-        completion(entry)
+        
+        if let pokemon = try? JSONDecoder().decode(Pokemon.self, from: pokemonData){
+            
+            let entry = SimpleEntry(date: Date(), configuration: configuration , pokemon: pokemon)
+            completion(entry)
+        }
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
+        
+        if let pokemon = try? JSONDecoder().decode(Pokemon.self, from: pokemonData){
+            
+            let entry = SimpleEntry(date: Date(), configuration: configuration , pokemon: pokemon)
+            let timeline = Timeline(entries: [entry], policy: .never)
+            completion(timeline)
         }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
+    let pokemon : Pokemon
 }
 
 struct WidgetPokemonEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        
+        SpecialView(image: Image(entry.pokemon.picName))
     }
 }
 
@@ -55,14 +60,8 @@ struct WidgetPokemon: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             WidgetPokemonEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Widget options")
+        .description("This is an example widget view.")
     }
 }
 
-struct WidgetPokemon_Previews: PreviewProvider {
-    static var previews: some View {
-        WidgetPokemonEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
-}

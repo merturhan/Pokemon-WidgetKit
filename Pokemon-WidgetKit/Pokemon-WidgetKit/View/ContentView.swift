@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ContentView: View {
     
@@ -27,6 +28,7 @@ struct ContentView: View {
         if let pokemonData = try?
             JSONEncoder().encode(pokemon){
             self.pokemonData = pokemonData
+            WidgetCenter.shared.reloadTimelines(ofKind: "WidgetPokemon")
             print(pokemon.name)
         }
     }

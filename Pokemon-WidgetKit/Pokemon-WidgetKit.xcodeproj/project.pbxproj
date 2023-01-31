@@ -26,6 +26,7 @@
 		EE1FCF8B29894A9000F8A8F6 /* PokemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FCF6A298940DD00F8A8F6 /* PokemonView.swift */; };
 		EE1FCF8C29894A9B00F8A8F6 /* SpecialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FCF6829893F9700F8A8F6 /* SpecialView.swift */; };
 		EE1FCF8D29894AA600F8A8F6 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1FCF6329893DA900F8A8F6 /* Pokemon.swift */; };
+		EE84EBD029894C5400C2A2D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE1FCF5929893A0000F8A8F6 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		EE1FCF7E29894A0100F8A8F6 /* WidgetPokemon.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = WidgetPokemon.intentdefinition; sourceTree = "<group>"; };
 		EE1FCF7F29894A0200F8A8F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE1FCF8129894A0200F8A8F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE84EBD129894C8700C2A2D2 /* WidgetPokemonExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetPokemonExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		EE1FCF49298939FF00F8A8F6 = {
 			isa = PBXGroup;
 			children = (
+				EE84EBD129894C8700C2A2D2 /* WidgetPokemonExtension.entitlements */,
 				EE1FCF54298939FF00F8A8F6 /* Pokemon-WidgetKit */,
 				EE1FCF7729894A0100F8A8F6 /* WidgetPokemon */,
 				EE1FCF7229894A0100F8A8F6 /* Frameworks */,
@@ -271,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE84EBD029894C5400C2A2D2 /* Assets.xcassets in Resources */,
 				EE1FCF8029894A0200F8A8F6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,6 +501,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetPokemonExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -524,6 +529,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetPokemonExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
